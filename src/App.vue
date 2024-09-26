@@ -1,9 +1,11 @@
 <script setup lang="ts">
-import { RouterLink, RouterView } from 'vue-router'
-import HelloWorld from './components/HelloWorld.vue'
+import { RouterView } from 'vue-router'
+// import { FadeTransition } from "vue3-transitions";
+
+// import HelloWorld from './components/HelloWorld.vue'
 </script>
 
-<template>
+<!-- <template>
   <header>
     <img alt="Vue logo" class="logo" src="@/assets/logo.svg" width="125" height="125" />
 
@@ -82,4 +84,14 @@ nav a:first-of-type {
     margin-top: 1rem;
   }
 }
-</style>
+</style> -->
+
+<template>
+  <div id="app">
+    <router-view name="header"></router-view>
+    <main>
+      <router-view />
+    </main>
+    <router-view name="footer"></router-view>
+  </div>
+</template>

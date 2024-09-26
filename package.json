@@ -15,8 +15,10 @@
     "deploy": "vite build && vite-gh-pages"
   },
   "dependencies": {
+    "nouislider": "^15.8.1",
     "pinia": "^2.1.7",
     "vue": "^3.4.29",
+    "vue-lazyload": "^3.0.0",
     "vue-router": "^4.3.3"
   },
   "devDependencies": {
@@ -36,6 +38,7 @@
     "npm-run-all2": "^6.2.0",
     "pengolahan_citra1": "file:",
     "prettier": "^3.2.5",
+    "sass-embedded": "^1.79.3",
     "typescript": "~5.4.0",
     "vite": "^5.3.1",
     "vite-plugin-vue-devtools": "^7.3.1",
