@@ -7,6 +7,8 @@ import Argon from './plugins/argon-kit.js'
 
 const app = createApp(App)
 
+app.config.warnHandler = () => null
+
 app.use(createPinia())
 app.use(router)
 app.use(Argon)
