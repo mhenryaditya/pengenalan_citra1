@@ -4,7 +4,7 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "dev": "vite",
+    "dev": "vite --force",
     "preview": "vite preview",
     "test:unit": "vitest",
     "build-only": "vite build",
@@ -15,9 +15,19 @@
     "deploy": "vite build && vite-gh-pages"
   },
   "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "^6.6.0",
+    "@fortawesome/free-brands-svg-icons": "^6.6.0",
+    "@fortawesome/free-regular-svg-icons": "^6.6.0",
+    "@fortawesome/free-solid-svg-icons": "^6.6.0",
+    "@fortawesome/vue-fontawesome": "^3.0.8",
+    "filepond": "^4.31.4",
+    "filepond-plugin-file-validate-type": "^1.2.9",
+    "filepond-plugin-image-preview": "^4.6.12",
     "nouislider": "^15.8.1",
     "pinia": "^2.1.7",
+    "sweetalert2": "^11.14.1",
     "vue": "^3.4.29",
+    "vue-filepond": "^7.0.4",
     "vue-lazyload": "^3.0.0",
     "vue-router": "^4.3.3"
   },
