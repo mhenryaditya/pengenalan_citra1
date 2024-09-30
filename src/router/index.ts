@@ -26,19 +26,19 @@ const router = createRouter({
       name: 'components',
       components: {
         header: AppHeader,
-        default: Landing,
-        footer: AppFooter
-      }
-    },
-    {
-      path: '/login',
-      name: 'login',
-      components: {
-        header: AppHeader,
-        default: Login,
+        main: Landing,
         footer: AppFooter
       }
     }
+    // {
+    //   path: '/login',
+    //   name: 'login',
+    //   components: {
+    //     header: AppHeader,
+    //     default: Login,
+    //     footer: AppFooter
+    //   }
+    // }
   ]
 })
 
