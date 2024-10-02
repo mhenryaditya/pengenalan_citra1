@@ -15,7 +15,6 @@ import 'filepond/dist/filepond.min.css';
 import FilePondPluginFileValidateType from 'filepond-plugin-file-validate-type';
 import FilePondPluginImagePreview from 'filepond-plugin-image-preview';
 import 'filepond-plugin-image-preview/dist/filepond-plugin-image-preview.min.css';
-import { blobToFile } from '@/plugins/BlobtoFile';
 
 const FileUpload = VueFilePond(
     FilePondPluginFileValidateType,
