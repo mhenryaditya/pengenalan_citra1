@@ -1,7 +1,7 @@
 <!-- eslint-disable vue/multi-word-component-names -->
 <script setup lang="ts">
 import FileUpload from '@/components/FileUpload.vue';
-import { inject, ref, type Ref } from 'vue';
+import { inject, onMounted, ref, type Ref } from 'vue';
 import BaseButton from '@/components/BaseButton.vue';
 import Badge from '@/components/Badge.vue';
 import Modal from '@/components/Modal.vue';
@@ -10,16 +10,20 @@ import { faCode } from '@fortawesome/free-solid-svg-icons';
 import BaseDropdown from '@/components/BaseDropdown.vue';
 import { faPenFancy } from "@fortawesome/free-solid-svg-icons/faPenFancy";
 import { faBolt, faCircleUp, faGears } from "@fortawesome/free-solid-svg-icons";
+import router from '@/router';
 
 
 let initPct = inject<Ref<File | undefined>>('initPct')
 let image = (value: File) => {
-    console.log(value);
     initPct!.value = value
 }
 let modals: Ref<{ modal3: boolean }> = ref({
     modal3: false
 })
+
+let clickMenu = (link: string) => {
+    router.push(`/${link}`)
+}
 
 </script>
 
@@ -158,12 +162,12 @@ let modals: Ref<{ modal3: boolean }> = ref({
                         <span class="nav-link-inner--text">Pengolahan Gambar</span>
                     </base-button>
                 </template>
-                <a href="/tresholding" class="dropdown-item">Tresholding</a>
-                <a href="/negative" class="dropdown-item">Citra
+                <a href="/tresholding" @click.prevent="clickMenu('tresholding')" class="dropdown-item">Tresholding</a>
+                <a href="/negative" @click.prevent="clickMenu('negative')" class="dropdown-item">Citra
                     Negatif</a>
-                <a href="/brightness" class="dropdown-item">Kecerahan
+                <a href="/brightness" @click.prevent="clickMenu('brightness')" class="dropdown-item">Kecerahan
                     Gambar</a>
-                <a href="/convert" class="dropdown-item">Konversi
+                <a href="/convert" @click.prevent="clickMenu('convert')" class="dropdown-item">Konversi
                     Grayscale</a>
             </base-dropdown>
             <base-dropdown class="flex-grow-1">
@@ -173,14 +177,17 @@ let modals: Ref<{ modal3: boolean }> = ref({
                         <span class="nav-link-inner--text">Geometri Gambar</span>
                     </base-button>
                 </template>
-                <a href="/rotate" class="dropdown-item">Rotasi Gambar</a>
-                <a href="/flip" class="dropdown-item">Flipping Gambar</a>
+                <a href="/rotate" @click.prevent="clickMenu('rotate')" class="dropdown-item">Rotasi Gambar</a>
+                <a href="/flip" @click.prevent="clickMenu('flip')" class="dropdown-item">Flipping Gambar</a>
             </base-dropdown>
             <base-dropdown class="flex-grow-1">
                 <template v-slot:title>
                     <base-button type="warning">
                         <FontAwesomeIcon :icon="faBolt" />
-                        <span class="nav-link-inner--text">Ekualisasi Citra</span>
+                        <span class="nav-link-inner--text">
+                            <a href="/equalise" @click.prevent="clickMenu('equalise')" class="dropdown-item">Ekualisasi
+                                Citra</a>
+                        </span>
                     </base-button>
                 </template>
             </base-dropdown>
@@ -188,7 +195,11 @@ let modals: Ref<{ modal3: boolean }> = ref({
                 <template v-slot:title>
                     <base-button type="danger">
                         <FontAwesomeIcon :icon="faCircleUp" />
-                        <span class="nav-link-inner--text">Konvolusi Citra</span>
+                        <span class="nav-link-inner--text">
+                            <a href="/convolution" @click.prevent="clickMenu('convolution')"
+                                class="dropdown-item">Konvolusi
+                                Citra</a>
+                        </span>
                     </base-button>
                 </template>
             </base-dropdown>

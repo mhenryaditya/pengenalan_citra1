@@ -19,3 +19,15 @@ provide('menuClick', menuClick)
     <router-view name="footer"></router-view>
   </div>
 </template>
+
+<style>
+#app {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+main {
+  flex-grow: 1;
+}
+</style>
