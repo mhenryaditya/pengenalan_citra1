@@ -46,12 +46,14 @@
 
 <script setup lang="ts">
 import router from '@/router';
-import { inject, ref, type Ref } from 'vue';
+import { inject, onMounted, ref, type Ref } from 'vue';
 import BaseButton from '@/components/BaseButton.vue';
 import PulseLoader from 'vue-spinner/src/ClipLoader.vue';
+import { bufferImgUrl, createImgUrl } from '@/plugins/Image';
+import { Jimp } from 'jimp';
 
 let initPct = inject<Ref<File | undefined>>('initPct');
-let loading: Ref<boolean> = ref(false)
+let loading: Ref<boolean> = ref(true)
 let urlInit: string
 let urlAfter: string
 
@@ -60,5 +62,13 @@ if (!initPct!.value) {
 }
 
 // proses 
+onMounted(async () => {
+    loading.value = true
+    urlInit = createImgUrl(initPct!.value as File)
+    let image = await Jimp.read(urlInit);
+    image.greyscale();
+    urlAfter = bufferImgUrl((await image.getBuffer(initPct!.value!.type as string)).buffer, `${initPct!.value?.name}-thresholding`, initPct!.value!.type as string)
+    loading.value = !loading.value
+})
 
 </script>
