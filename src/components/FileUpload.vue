@@ -42,26 +42,25 @@ const emit = defineEmits<{
 
 // Defining the reference type
 const pond = ref<FilePond | null>(null);
-const myFiles = ref([]);
+const myFiles = ref<any[]>([]);
 
 const handleFilePondInit = () => {
-    console.log('Image has initialized');
-
     if (pond.value) {
         const files = pond.value.getFiles();
-        // console.log(files);
         emit('file', files[0].file as File)
     }
 };
 
 // You may also want to ensure FilePond is initialized after the DOM is ready
 onMounted(() => {
-    console.log('Component has mounted');
-    // console.log(blobToFile(props.initPct, props.name, 'image/jpg'));
-
-    // if (props.initPct) {
-    //     myFiles.value = blobToFile(props.initPct, props.name, 'image/jpg')
-    // }
+    if (props.initPct) {
+        myFiles.value = [{
+            source: props.initPct,
+            options: {
+                type: 'local'
+            }
+        }]
+    }
 });
 
 </script>
