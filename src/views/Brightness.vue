@@ -33,7 +33,7 @@
                             <div class="input-group-prepend">
                                 <span class="input-group-text text-black" id="basic-addon1">Kecerahan</span>
                             </div>
-                            <VueAutoNumeric :options="{minValue:'0',maxValue:'255'}" :value="brightness" @valueNumber="setNumber" id="basic-addon1"
+                            <VueAutoNumeric :options="{minValue:'0',maxValue:'255'}" @valueNumber="setNumber" id="basic-addon1"
                                 class="flex-grow-1">
                             </VueAutoNumeric>
                         </div>
