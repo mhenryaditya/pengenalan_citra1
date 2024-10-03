@@ -93,6 +93,8 @@ let applyImg = async () => {
     image.threshold({ max: maxNumber.value });
     urlAfter = bufferImgUrl((await image.getBuffer(initPct!.value!.type as string)).buffer, `${initPct!.value?.name}-thresholding`, initPct!.value!.type as string)
     loading.value = !loading.value
+
+    // image.brightness()
 }
 
 </script>
