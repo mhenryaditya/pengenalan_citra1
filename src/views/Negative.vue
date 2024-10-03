@@ -27,19 +27,10 @@
                 </div>
                 <!-- Adjust Tools -->
                 <div class="row mt-3">
-                    <!-- Tools -->
-                    <!-- <div class="col-6">
-                        <div class="input-group d-flex">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text text-black" id="basic-addon1">Ambang</span>
-                            </div>
-                            <VueAutoNumeric :value="maxNumber" @valueNumber="setNumber" id="basic-addon1"
-                                class="flex-grow-1">
-                            </VueAutoNumeric>
-                        </div>
-                        <span class="text-info d-block" style="font-size: 10pt;">Tekan Enter untuk menerapkan
-                            hasil</span>
-                    </div> -->
+
+                    <div class="col-6">
+                       
+                    </div>
                     <!-- Download Hasil -->
                     <div class="col-6 d-flex flex-column flex-end">
                         <base-button tag="a" :href="urlAfter" class="mb-3 mb-sm-0" type="success"
@@ -61,38 +52,23 @@ import BaseButton from '@/components/BaseButton.vue';
 import { inject, onMounted, ref, watch, type Ref } from 'vue';
 import PulseLoader from 'vue-spinner/src/ClipLoader.vue';
 import { bufferImgUrl, createImgUrl } from '@/plugins/Image';
-import VueAutoNumeric from '@/components/VueAutoNumeric.vue';
 import { Jimp } from 'jimp';
 
 let initPct = inject<Ref<File | undefined>>('initPct');
 let loading: Ref<boolean> = ref(true)
 let urlInit: string
 let urlAfter: string
-let maxNumber: Ref<number> = ref(50)
 
 if (!initPct!.value) {
     router.push('/') // apabila user belum input gambar dari landing, maka arahkan ke landing
 }
 
-let setNumber = (value: any) => {
-    maxNumber.value = value
-}
-
 onMounted(async () => {
-    await applyImg()
-})
-
-watch(() => maxNumber.value, async () => {
-    await applyImg()
-})
-
-let applyImg = async () => {
-    loading.value = true
+   loading.value = true
     urlInit = createImgUrl(initPct!.value as File)
     let image = await Jimp.read(urlInit);
     image.invert();
     urlAfter = bufferImgUrl((await image.getBuffer(initPct!.value!.type as string)).buffer, `${initPct!.value?.name}-thresholding`, initPct!.value!.type as string)
     loading.value = !loading.value
-}
-
+})
 </script>
