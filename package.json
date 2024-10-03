@@ -21,6 +21,7 @@
     "@fortawesome/free-solid-svg-icons": "^6.6.0",
     "@fortawesome/vue-fontawesome": "^3.0.8",
     "@jimp/custom": "^0.22.12",
+    "@techstark/opencv-js": "^4.10.0-release.1",
     "autonumeric": "^4.10.5",
     "filepond": "^4.31.4",
     "filepond-plugin-file-validate-type": "^1.2.9",
