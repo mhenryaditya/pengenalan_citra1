@@ -23,9 +23,26 @@ let modals: Ref<{ modal3: boolean }> = ref({
 
 let clickMenu = (link: string) => {
     router.push(`/${link}`)
+    modals.value.modal3 = !modals.value.modal3
 }
 
 </script>
+
+<style>
+.optionDropdown {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    flex-direction: column;
+    gap: 10px;
+}
+
+@media (min-width: 769px) {
+    .optionDropdown {
+        flex-direction: row;
+    }
+}
+</style>
 
 <template>
 
@@ -54,17 +71,6 @@ let clickMenu = (link: string) => {
                                     fitur, mulai dari penyesuaian citra, transformasi geometri, ekualisasi histogram,
                                     hingga penggunaan filter konvolusi pada citra. Sesuaikan gambar sesuai kebutuhan
                                     Anda dengan mudah dan simpan hasilnya!</p>
-                                <!-- <div class="btn-wrapper">
-                                    <base-button tag="a"
-                                        href="https://demos.creative-tim.com/argon-design-system/docs/components/alerts.html"
-                                        class="mb-3 mb-sm-0" type="info" icon="fa fa-code">
-                                        Components
-                                    </base-button>
-                                    <base-button tag="a" href="https://www.creative-tim.com/product/argon-design-system"
-                                        class="mb-3 mb-sm-0" type="white" icon="ni ni-cloud-download-95">
-                                        Download HTML
-                                    </base-button>
-                                </div> -->
                                 <FileUpload name="initPct" @file="image" @removefile="image" :init-pct="initPct" />
                                 <base-button v-if="!initPct" tag="button" class="mb-3 mb-sm-0" block type="default"
                                     icon="fa fa-code" disabled>
@@ -90,51 +96,37 @@ let clickMenu = (link: string) => {
                                 <card class="border-0" hover shadow body-classes="py-5">
                                     <icon name="ni ni-check-bold" type="primary" rounded class="mb-4">
                                     </icon>
-                                    <h6 class="text-primary text-uppercase">Download Argon</h6>
-                                    <p class="description mt-3">Argon is a great free UI package based on Bootstrap 4
-                                        that includes the most important components and features.</p>
+                                    <h6 class="text-primary text-uppercase">Upload Citra</h6>
+                                    <p class="description mt-3">Anda tinggal memasukkan gambar pada halaman ini dan
+                                        kemudian pilih proses pengolahan citra yang diinginkan.</p>
                                     <div>
-                                        <badge type="primary" rounded>design</badge>
-                                        <badge type="primary" rounded>system</badge>
-                                        <badge type="primary" rounded>creative</badge>
+                                        <badge type="primary" rounded>Upload</badge>
                                     </div>
-                                    <base-button tag="a" href="#" type="primary" class="mt-4">
-                                        Learn more
-                                    </base-button>
                                 </card>
                             </div>
                             <div class="col-lg-4">
                                 <card class="border-0" hover shadow body-classes="py-5">
                                     <icon name="ni ni-istanbul" type="success" rounded class="mb-4">
                                     </icon>
-                                    <h6 class="text-success text-uppercase">Build Something</h6>
-                                    <p class="description mt-3">Argon is a great free UI package based on Bootstrap
-                                        4 that includes the most important components and features.</p>
+                                    <h6 class="text-success text-uppercase">Pilih Operasi Pengolahan Citra</h6>
+                                    <p class="description mt-3">Terdapat tujuh operasi citra yang dapat Anda gunakan.
+                                        Sesuaikan operasi citra tersebut berdasarkan kebutuhan Anda.</p>
                                     <div>
-                                        <badge type="success" rounded>business</badge>
-                                        <badge type="success" rounded>vision</badge>
-                                        <badge type="success" rounded>success</badge>
+                                        <badge type="success" rounded>Edit</badge>
+                                        <badge type="success" rounded>Proses</badge>
                                     </div>
-                                    <base-button tag="a" href="#" type="success" class="mt-4">
-                                        Learn more
-                                    </base-button>
                                 </card>
                             </div>
                             <div class="col-lg-4">
                                 <card class="border-0" hover shadow body-classes="py-5">
                                     <icon name="ni ni-planet" type="warning" rounded class="mb-4">
                                     </icon>
-                                    <h6 class="text-warning text-uppercase">Prepare Launch</h6>
-                                    <p class="description mt-3">Argon is a great free UI package based on Bootstrap
-                                        4 that includes the most important components and features.</p>
+                                    <h6 class="text-warning text-uppercase">Download Hasil</h6>
+                                    <p class="description mt-3">Proses citra dengan beberapa pengaturan jika
+                                        memungkinkan kemudian dan simpan hasilnya dengan mudah tanpa repot.</p>
                                     <div>
-                                        <badge type="warning" rounded>marketing</badge>
-                                        <badge type="warning" rounded>product</badge>
-                                        <badge type="warning" rounded>launch</badge>
+                                        <badge type="warning" rounded>Unduh</badge>
                                     </div>
-                                    <base-button tag="a" href="#" type="warning" class="mt-4">
-                                        Learn more
-                                    </base-button>
                                 </card>
                             </div>
                         </div>
@@ -151,60 +143,47 @@ let clickMenu = (link: string) => {
                 <FontAwesomeIcon :icon="faCode" /> Pilih Pengolahan Citra
             </h6>
         </template>
+        <template v-slot:body>
+            <p>Untuk lanjut ke proses pengolahan citra, silakan pilih salah satu operasi yang tersedia berikut.</p>
 
-        <p>Untuk lanjut ke proses pengolahan citra, silakan pilih salah satu operasi yang tersedia berikut.</p>
-
-        <div class="d-flex flex-wrap" style="gap: 10px;">
-            <base-dropdown class="flex-grow-1">
-                <template v-slot:title>
-                    <base-button type="primary" class="dropdown-toggle">
-                        <FontAwesomeIcon :icon="faPenFancy" />
-                        <span class="nav-link-inner--text">Pengolahan Gambar</span>
-                    </base-button>
-                </template>
-                <a href="/tresholding" @click.prevent="clickMenu('tresholding')" class="dropdown-item">Tresholding</a>
-                <a href="/negative" @click.prevent="clickMenu('negative')" class="dropdown-item">Citra
-                    Negatif</a>
-                <a href="/brightness" @click.prevent="clickMenu('brightness')" class="dropdown-item">Kecerahan
-                    Gambar</a>
-                <a href="/convert" @click.prevent="clickMenu('convert')" class="dropdown-item">Konversi
-                    Grayscale</a>
-            </base-dropdown>
-            <base-dropdown class="flex-grow-1">
-                <template v-slot:title>
-                    <base-button type="success" class="dropdown-toggle">
-                        <FontAwesomeIcon :icon="faGears" />
-                        <span class="nav-link-inner--text">Geometri Gambar</span>
-                    </base-button>
-                </template>
-                <a href="/rotate" @click.prevent="clickMenu('rotate')" class="dropdown-item">Rotasi Gambar</a>
-                <a href="/flip" @click.prevent="clickMenu('flip')" class="dropdown-item">Flipping Gambar</a>
-            </base-dropdown>
-            <base-dropdown class="flex-grow-1">
-                <template v-slot:title>
-                    <base-button type="warning">
-                        <FontAwesomeIcon :icon="faBolt" />
-                        <span class="nav-link-inner--text">
-                            <a href="/equalise" @click.prevent="clickMenu('equalise')" class="dropdown-item">Ekualisasi
-                                Citra</a>
-                        </span>
-                    </base-button>
-                </template>
-            </base-dropdown>
-            <base-dropdown class="flex-grow-1">
-                <template v-slot:title>
-                    <base-button type="danger">
-                        <FontAwesomeIcon :icon="faCircleUp" />
-                        <span class="nav-link-inner--text">
-                            <a href="/convolution" @click.prevent="clickMenu('convolution')"
-                                class="dropdown-item">Konvolusi
-                                Citra</a>
-                        </span>
-                    </base-button>
-                </template>
-            </base-dropdown>
-
-        </div>
+            <div class="optionDropdown">
+                <base-dropdown class="flex-grow-1">
+                    <template v-slot:title>
+                        <base-button type="primary" class="dropdown-toggle">
+                            <FontAwesomeIcon :icon="faPenFancy" />
+                            <span class="nav-link-inner--text">Pengolahan Gambar</span>
+                        </base-button>
+                    </template>
+                    <a href="" @click.prevent="clickMenu('tresholding')" class="dropdown-item">Tresholding</a>
+                    <a href="" @click.prevent="clickMenu('negative')" class="dropdown-item">Citra
+                        Negatif</a>
+                    <a href="" @click.prevent="clickMenu('brightness')" class="dropdown-item">Kecerahan
+                        Gambar</a>
+                    <a href="" @click.prevent="clickMenu('convert')" class="dropdown-item">Konversi
+                        Grayscale</a>
+                </base-dropdown>
+                <base-dropdown class="flex-grow-1">
+                    <template v-slot:title>
+                        <base-button type="success" class="dropdown-toggle">
+                            <FontAwesomeIcon :icon="faGears" />
+                            <span class="nav-link-inner--text">Geometri Gambar</span>
+                        </base-button>
+                    </template>
+                    <a href="" @click.prevent="clickMenu('rotate')" class="dropdown-item">Rotasi Gambar</a>
+                    <a href="" @click.prevent="clickMenu('flip')" class="dropdown-item">Flipping Gambar</a>
+                </base-dropdown>
+                <base-dropdown class="flex-grow-1">
+                    <template v-slot:title>
+                        <base-button type="warning" class="dropdown-toggle">
+                            <FontAwesomeIcon :icon="faBolt" />
+                            <span class="nav-link-inner--text">Perbaikan Gambar</span>
+                        </base-button>
+                    </template>
+                    <a href="" class="dropdown-item" @click.prevent="clickMenu('equalise')">Ekualisasi Gambar</a>
+                    <a href="" class="dropdown-item" @click.prevent="clickMenu('convolution')">Konvolusi Gambar</a>
+                </base-dropdown>
+            </div>
+        </template>
     </modal>
 
 

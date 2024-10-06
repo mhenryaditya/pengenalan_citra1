@@ -29,14 +29,9 @@
                 <div class="row mt-3">
                     <!-- Tools -->
                     <div class="col-6">
-                        <div class="input-group d-flex">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text text-black" id="basic-addon1">Ambang</span>
-                            </div>
-                            <VueAutoNumeric :value="maxNumber" @valueNumber="setNumber" id="basic-addon1"
-                                class="flex-grow-1">
-                            </VueAutoNumeric>
-                        </div>
+                        <VueAutoNumeric :value="maxNumber" :text="'Ambang'" @valueNumber="setNumber" id="basic-addon1"
+                            class="flex-grow-1">
+                        </VueAutoNumeric>
                         <span class="text-info d-block" style="font-size: 10pt;">Tekan Enter untuk menerapkan
                             hasil</span>
                     </div>
@@ -91,7 +86,7 @@ let applyImg = async () => {
     urlInit = createImgUrl(initPct!.value as File)
     let image = await Jimp.read(urlInit);
     image.threshold({ max: maxNumber.value });
-    urlAfter = bufferImgUrl((await image.getBuffer(initPct!.value!.type as string)).buffer, `${initPct!.value?.name}-thresholding`, initPct!.value!.type as string)
+    urlAfter = bufferImgUrl((await image.getBuffer(initPct!.value!.type as string)).buffer, `${initPct!.value?.name}`, initPct!.value!.type as string)
     loading.value = !loading.value
 
     // image.brightness()

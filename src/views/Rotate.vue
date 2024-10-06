@@ -1,5 +1,5 @@
 <template>
-   <div v-if="loading" class="mt-5 p-5 d-flex justify-content-center">
+    <div v-if="loading" class="mt-5 p-5 d-flex justify-content-center">
         <div class="align-self-center p-5 shadow-lg rounded-lg">
             <PulseLoader :size="'50px'"></PulseLoader>
             <div class="mt-2 d-block d-flex flex-column gap-2 align-items-center">
@@ -29,14 +29,9 @@
                 <div class="row mt-3">
                     <!-- Tools -->
                     <div class="col-6">
-                        <div class="input-group d-flex">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text text-black" id="basic-addon1">Ambang</span>
-                            </div>
-                            <VueAutoNumeric :options="{minValue:'-360',maxValue:'360'}" :value="derajat" @valueNumber="setNumber" id="basic-addon1"
-                                class="flex-grow-1">
-                            </VueAutoNumeric>
-                        </div>
+                        <VueAutoNumeric :text="'Derajat Rotasi'" :options="{ minValue: '-360', maxValue: '360' }"
+                            :value="derajat" @valueNumber="setNumber" id="basic-addon1" class="flex-grow-1">
+                        </VueAutoNumeric>
                         <span class="text-info d-block" style="font-size: 10pt;">Tekan Enter untuk menerapkan
                             hasil</span>
                     </div>
@@ -90,8 +85,8 @@ let applyImg = async () => {
     loading.value = true
     urlInit = createImgUrl(initPct!.value as File)
     let image = await Jimp.read(urlInit);
-    image.rotate({deg: derajat.value});
-    urlAfter = bufferImgUrl((await image.getBuffer(initPct!.value!.type as string)).buffer, `${initPct!.value?.name}-thresholding`, initPct!.value!.type as string)
+    image.rotate({ deg: derajat.value });
+    urlAfter = bufferImgUrl((await image.getBuffer(initPct!.value!.type as string)).buffer, `${initPct!.value?.name}`, initPct!.value!.type as string)
     loading.value = !loading.value
 
     // image.brightness()

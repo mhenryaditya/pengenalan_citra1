@@ -10,7 +10,7 @@
             <template v-slot:content-header="{ closeMenu }">
                 <div class="row">
                     <div class="col-6 collapse-brand">
-                        <a href="/">
+                        <a href="/pengolahan_citra1/">
                             <img src="/img/brand/logo2-removebg-preview.png">
                         </a>
                     </div>
@@ -29,13 +29,12 @@
                         </a>
                     </template>
                     <!-- <router-link to="/tresholding" class="dropdown-item">Tresholding</router-link> -->
-                    <a href="/tresholding" class="dropdown-item"
-                        @click.prevent="clickMenu('tresholding')">Tresholding</a>
-                    <a href="/negative" class="dropdown-item" @click.prevent="clickMenu('negative')">Citra
+                    <a href="" class="dropdown-item" @click.prevent="clickMenu('tresholding')">Tresholding</a>
+                    <a href="" class="dropdown-item" @click.prevent="clickMenu('negative')">Citra
                         Negatif</a>
-                    <a href="/brightness" class="dropdown-item" @click.prevent="clickMenu('brightness')">Kecerahan
+                    <a href="" class="dropdown-item" @click.prevent="clickMenu('brightness')">Kecerahan
                         Gambar</a>
-                    <a href="/convert" class="dropdown-item" @click.prevent="clickMenu('convert')">Konversi
+                    <a href="" class="dropdown-item" @click.prevent="clickMenu('convert')">Konversi
                         Grayscale</a>
                 </base-dropdown>
                 <base-dropdown tag="li" class="nav-item">
@@ -45,17 +44,19 @@
                             <span class="nav-link-inner--text">Geometri Gambar</span>
                         </a>
                     </template>
-                    <a href="/rotate" class="dropdown-item" @click.prevent="clickMenu('rotate')">Rotasi Gambar</a>
-                    <a href="/flip" class="dropdown-item" @click.prevent="clickMenu('flip')">Flipping Gambar</a>
+                    <a href="" class="dropdown-item" @click.prevent="clickMenu('rotate')">Rotasi Gambar</a>
+                    <a href="" class="dropdown-item" @click.prevent="clickMenu('flip')">Flipping Gambar</a>
                 </base-dropdown>
-                <a href="/equalise" class="nav-link" @click.prevent="clickMenu('equalise')">
-                    <FontAwesomeIcon :icon="faBolt" />
-                    <span class="nav-link-inner--text">Ekualisasi Citra</span>
-                </a>
-                <a href="/convolution" class="nav-link" @click.prevent="clickMenu('convolution')">
-                    <FontAwesomeIcon :icon="faCircleUp" />
-                    <span class="nav-link-inner--text">Konvolusi Citra</span>
-                </a>
+                <base-dropdown tag="li" class="nav-item">
+                    <template v-slot:title>
+                        <a href="#" class="nav-link" data-toggle="dropdown" role="button">
+                            <FontAwesomeIcon :icon="faBolt" />
+                            <span class="nav-link-inner--text">Perbaikan Gambar</span>
+                        </a>
+                    </template>
+                    <a href="" class="dropdown-item" @click.prevent="clickMenu('equalise')">Ekualisasi Gambar</a>
+                    <a href="" class="dropdown-item" @click.prevent="clickMenu('convolution')">Konvolusi Gambar</a>
+                </base-dropdown>
             </ul>
         </base-nav>
     </header>

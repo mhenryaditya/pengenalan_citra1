@@ -1,5 +1,5 @@
 <template>
-     <div v-if="loading" class="mt-5 p-5 d-flex justify-content-center">
+    <div v-if="loading" class="mt-5 p-5 d-flex justify-content-center">
         <div class="align-self-center p-5 shadow-lg rounded-lg">
             <PulseLoader :size="'50px'"></PulseLoader>
             <div class="mt-2 d-block d-flex flex-column gap-2 align-items-center">
@@ -29,7 +29,7 @@
                 <div class="row mt-3">
 
                     <div class="col-6">
-                       
+
                     </div>
                     <!-- Download Hasil -->
                     <div class="col-6 d-flex flex-column flex-end">
@@ -49,7 +49,7 @@ import router from '@/router';
 // import { faArrowRight } from '@fortawesome/free-solid-svg-icons';
 // import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import BaseButton from '@/components/BaseButton.vue';
-import { inject, onMounted, ref, watch, type Ref } from 'vue';
+import { inject, onMounted, ref, type Ref } from 'vue';
 import PulseLoader from 'vue-spinner/src/ClipLoader.vue';
 import { bufferImgUrl, createImgUrl } from '@/plugins/Image';
 import { Jimp } from 'jimp';
@@ -64,11 +64,11 @@ if (!initPct!.value) {
 }
 
 onMounted(async () => {
-   loading.value = true
+    loading.value = true
     urlInit = createImgUrl(initPct!.value as File)
     let image = await Jimp.read(urlInit);
     image.invert();
-    urlAfter = bufferImgUrl((await image.getBuffer(initPct!.value!.type as string)).buffer, `${initPct!.value?.name}-thresholding`, initPct!.value!.type as string)
+    urlAfter = bufferImgUrl((await image.getBuffer(initPct!.value!.type as string)).buffer, `${initPct!.value?.name}`, initPct!.value!.type as string)
     loading.value = !loading.value
 })
 </script>

@@ -1,6 +1,10 @@
 <template>
-    <div>
-        <input ref="autonumericInput" class="form-control" :placeholder="placeholder" @keydown.enter="emitValue" />
+    <div class="input-group d-flex flex-row">
+        <div class="input-group-prepend border-right bg-bodys">
+            <span class="input-group-text text-body" id="basic-addon1">{{ text }}</span>
+        </div>
+        <input ref="autonumericInput" class="form-control border-left pl-3 text-body" :placeholder="placeholder"
+            @keydown.enter="emitValue" />
     </div>
 </template>
 
@@ -10,6 +14,10 @@ import AutoNumeric from 'autonumeric/dist/autoNumeric.min';
 
 const autonumericInput = ref<HTMLInputElement | null>(null);
 const props = defineProps({
+    text: {
+        type: String,
+        required: true,
+    },
     value: {
         type: Number,
         required: true,

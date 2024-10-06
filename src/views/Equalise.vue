@@ -60,7 +60,7 @@
 
 <script setup lang="ts">
 import BaseButton from '@/components/BaseButton.vue';
-import { inject, onMounted, ref, watch, type Ref } from 'vue';
+import { inject, onMounted, ref, type Ref } from 'vue';
 import PulseLoader from 'vue-spinner/src/ClipLoader.vue';
 import { createImgUrl } from '@/plugins/Image';
 import cv from '@techstark/opencv-js'

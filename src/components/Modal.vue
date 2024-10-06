@@ -3,7 +3,8 @@
     :class="[{ 'show d-block': show }, { 'd-none': !show }, { 'modal-mini': type === 'mini' }]" v-show="show"
     tabindex="-1" role="dialog" :aria-hidden="!show">
 
-    <div class="modal-dialog modal-dialog-centered" :class="[{ 'modal-notice': type === 'notice' }, modalClasses]">
+    <div class="modal-dialog modal-dialog-centered" :class="[{ 'modal-notice': type === 'notice' }, modalClasses]"
+      style="min-width: fit-content">
       <div class="modal-content" :class="[gradient ? `bg-gradient-${gradient}` : '', modalContentClasses]">
 
         <div class="modal-header" :class="[headerClasses]" v-if="$slots.header">
@@ -16,8 +17,8 @@
           </slot>
         </div>
 
-        <div class="modal-body" :class="bodyClasses">
-          <slot></slot>
+        <div class="modal-body">
+          <slot name="body"></slot>
         </div>
 
         <div class="modal-footer" :class="footerClasses" v-if="$slots.footer">
@@ -32,9 +33,6 @@
 
 export default {
   name: "modal",
-  components: {
-    // SlideInOut
-  },
   props: {
     show: Boolean,
     showClose: {

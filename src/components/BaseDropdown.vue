@@ -1,25 +1,18 @@
 <template>
-    <component class="dropdown"
-               :is="tag"
-               :class="[{show: isOpen}, {'dropdown': direction === 'down'}, {'dropup': direction ==='up'}]"
-               aria-haspopup="true"
-               :aria-expanded="isOpen"
-               @click="toggleDropDown"
-               v-click-outside="closeDropDown">
+  <component class="dropdown" :is="tag"
+    :class="[{ show: isOpen }, { 'dropdown': direction === 'down' }, { 'dropup': direction === 'up' }]"
+    aria-haspopup="true" :aria-expanded="isOpen" @click="toggleDropDown" id="dropdown">
 
-        <slot name="title">
-            <a class="dropdown-toggle nav-link"
-               :class="{'no-caret': hideArrow}"
-               data-toggle="dropdown">
-                <i :class="icon"></i>
-                <span class="no-icon">{{title}}</span>
-            </a>
-        </slot>
-        <ul class="dropdown-menu"
-            :class="[{'dropdown-menu-right': position === 'right'}, {show: isOpen}, menuClasses]">
-            <slot></slot>
-        </ul>
-    </component>
+    <slot name="title">
+      <a class="dropdown-toggle nav-link" :class="{ 'no-caret': hideArrow }" data-toggle="dropdown">
+        <i :class="icon"></i>
+        <span class="no-icon">{{ title }}</span>
+      </a>
+    </slot>
+    <ul class="dropdown-menu" :class="[{ 'dropdown-menu-right': position === 'right' }, { show: isOpen }, menuClasses]">
+      <slot></slot>
+    </ul>
+  </component>
 </template>
 <script>
 export default {
@@ -79,5 +72,6 @@ export default {
 
 .dropdown .dropdown-toggle {
   cursor: pointer;
+  width: 100%;
 }
 </style>
