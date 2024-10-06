@@ -10,6 +10,7 @@ import BaseSlider from '../components/BaseSlider.vue'
 import BaseSwitch from '../components/BaseSwitch.vue'
 import Card from '../components/Card.vue'
 import Icon from '../components/Icon.vue'
+import Modal from '../components/Modal.vue'
 
 export default {
   install(Vue) {
@@ -25,5 +26,6 @@ export default {
     Vue.component(BaseSwitch.name, BaseSwitch)
     Vue.component(Card.name, Card)
     Vue.component(Icon.name, Icon)
+    Vue.component(Modal.name, Modal)
   }
 }

@@ -13,9 +13,7 @@ provide('menuClick', menuClick)
 <template>
   <div id="app">
     <router-view name="header"></router-view>
-    <main>
-      <router-view name="main"></router-view>
-    </main>
+    <router-view name="main" id="main"></router-view>
     <router-view name="footer"></router-view>
   </div>
 </template>
@@ -27,7 +25,8 @@ provide('menuClick', menuClick)
   min-height: 100vh;
 }
 
-main {
+#main {
   flex-grow: 1;
+  overflow: visible;
 }
 </style>
